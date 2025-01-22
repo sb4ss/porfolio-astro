@@ -1,0 +1,243 @@
+---
+
+---
+
+
+<div class="row-terminal">
+    <section class="terminal">
+      <div class="top-bar">
+        <p>Bash <i class="bi bi-terminal"></i></p>
+      </div>
+      <div class="display-terminal">
+        <p>~$ sudo apt install neofetch</p>
+        <p class="ins">installing neofetch...</p>
+        <p class="sudo">~$ sudo su neofetch</p>
+      </div>
+      <div class="info-terminal">
+        <p>Sebastian Zapata</p>
+        <p>E-mail: sebaszapata2022@gmail.com</p>
+        <p>location: Cali, Colombia</p>
+      </div>
+    </section>
+  </div>
+
+
+<style>
+  /*  Estilos sobre la terminal    */
+
+.row-terminal {
+  width: 50%;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+}
+
+.row-terminal .terminal {
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  left: 50%;
+  transform: translateX(-50%);
+  position: absolute;
+  height: 500px;
+  width: 40%;
+  background-color: rgba(61, 61, 61, 0.281);
+}
+
+.row-terminal .terminal .top-bar {
+  border-radius: 20px 20px 0px 0px;
+  color: #636363;
+  font-family: "Chakra Petch", sans-serif;
+  font-weight: 600;
+  font-style: normal;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: rgb(12, 12, 12);
+  height: 50px;
+  width: 100%;
+}
+
+
+
+.top-bar .fa-x:hover {
+  transition: 0.2s;
+  color: #bb3535;
+}
+
+.top-bar p {
+  margin-left: 10px;
+}
+
+.row-terminal .terminal .display-terminal {
+  
+  height: 70%;
+  width: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  text-shadow: 0px 0px 10px rgba(0, 255, 0, 0.5);
+  padding: 20px;
+  color: #1eff00;
+  font-family: "Chakra Petch", sans-serif;
+  font-weight: 600;
+  font-style: normal;
+}
+
+ .row-terminal .terminal .info-terminal {
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  height: 20%;
+  width: 100%;
+  white-space: nowrap;
+  text-shadow: 0px 0px 10px rgba(169, 169, 169, 0.5);
+  padding: 20px;
+  color: #7f7f7f;
+  font-family: "Chakra Petch", sans-serif;
+  font-weight: 600;
+  font-style: normal;
+}
+
+.display-terminal {
+  width: 0%;
+  animation-name: display-terminal;
+  animation-duration: 1s;
+  animation-delay: 0.5s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes display-terminal {
+  from {
+    width: 0%;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+body{
+  animation-name: scroll;
+  animation-duration: 12s;
+
+}
+
+@keyframes scroll {
+  from{
+    overflow: hidden;
+  }
+  to{
+    overflow: auto;
+  }
+}
+
+.ins {
+  overflow: hidden;
+  width: 0%;
+  animation-name: install;
+  animation-duration: 1s;
+  animation-delay: 1.2s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes install {
+  from {
+    width: 0%;
+  }
+  to {
+    visibility: visible;
+    width: 100%;
+  }
+}
+
+.sudo {
+  overflow: hidden;
+  width: 0%;
+  animation-name: sudo;
+  animation-duration: 0.4s;
+  animation-delay: 2.2s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes sudo {
+  from {
+    width: 0%;
+  }
+  to {
+    visibility: visible;
+    width: 100%;
+  }
+}
+
+.terminal {
+  animation-name: terminal;
+  animation-duration: 0.7s;
+  animation-delay: 2.6s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes terminal {
+  from {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  to {
+    transition: 1.5s ease-in-out;
+    left: 0%;
+    transform: translateX(11%);
+  }
+}
+
+.top-container .row-terminal .terminal .info-terminal {
+  width: 0%;
+  visibility: hidden;
+  animation-delay: 3s;
+  animation-duration: 1s;
+  animation-name: info;
+  animation-fill-mode: forwards;
+}
+
+@keyframes info {
+  from {
+    width: 0%;
+  }
+  to {
+    visibility: visible;
+    width: 100%;
+  }
+}
+
+
+/* Para pantallas de hasta 768px (tablets) */
+@media (max-width: 768px) {
+  .top-container .row-terminal .terminal {
+    font-size: 10px;
+    height: 300px;
+    width: 300px;
+  }
+}
+
+/* Para pantallas de hasta 480px (móviles) */
+@media (max-width: 690px) {
+ .row-terminal {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    width: 100%;
+  }
+
+.row-terminal .terminal {
+    font-size: 10px;
+    position: absolute;
+    animation-name: none;
+    height: 300px;
+    width: 300px;
+  }
+
+.row-terminal .terminal .info-terminal {
+    padding: 0px;
+    padding-left: 20px;
+  }
+}
+</style>

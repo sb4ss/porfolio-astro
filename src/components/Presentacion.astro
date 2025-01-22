@@ -1,0 +1,193 @@
+<div class="separation"></div>
+<div class="row-container">
+    <h1>Hola, soy Sebastian!</h1>
+    <p>Técnico en desarrollo de Software y desarrollo frontend web</p>
+    
+      <a
+        href="HV  SEBASTIAN ZAPATA RESTREPO.pdf"
+        download="HV SEBASTIAN ZAPATA RESTREPO.pdf"
+        class="download">Descarga mi CV</a>
+    
+  </div>
+
+
+  <style>
+
+
+/*  Estilos sobre mi    */
+ .row-container {
+  font-family: "Quicksand", sans-serif;
+  color: #c1c1c1;
+  background: none;
+  width: 50%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+ .row-container::-webkit-scrollbar {
+  display: none;
+}
+ .row-container h1 {
+    font-weight: bolder;
+    margin-left: 10%;
+  width: auto;
+  font-size: 90px;
+}
+
+ .row-container p {
+  margin: 10%;
+  font-weight: 500;
+  font-size: 35px;
+}
+
+ .row-container a {
+  text-decoration: none;
+  cursor: pointer;
+  border: none;
+  color: #c1c1c1;
+}
+
+ .row-container .download {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  cursor: pointer;
+  border: none;
+  color: #c1c1c1;
+  background: #2437c9;
+  border-radius: 20px;
+  font-family: "Quicksand", sans-serif;
+  font-weight: bold;
+  font-size: 20px;
+  height: 50px;
+  width: 200px;
+  transition: 0.2s;
+  margin-left: 10%;
+
+}
+
+.row-container .download:hover{
+    background-color: #384ad4;
+}
+
+
+
+
+
+
+
+
+
+
+/*  Separación entre terminal y sobre mi    */
+.separation {
+    position: absolute;
+    width: 4px;
+    border-radius: 15px;
+    height: 900px;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/*  Animaciones  */
+ .separation {
+  animation-fill-mode: forwards;
+  animation-delay: 3s;
+  animation-name: separation;
+  animation-duration: 0.4s;
+}
+
+@keyframes separation {
+  from {
+    background: linear-gradient(to bottom, #151515, #292929);
+    height: 0vh;
+  }
+  to {
+    height: 70vh;
+    background-color: #c1c1c1;
+  }
+}
+
+
+ .row-container {
+  overflow: hidden;
+  visibility: hidden;
+  animation-name: aparecer;
+  animation-duration: 0.5s;
+  animation-fill-mode: forwards;
+  animation-delay: 3s;
+}
+
+@keyframes aparecer {
+  from {
+    overflow: hidden;
+    visibility: hidden;
+  }
+  to {
+    overflow: visible;
+    visibility: visible;
+    text-shadow: 0px 0px 10px rgba(143, 143, 143, 0.5);
+    color: #c1c1c1;
+  }
+}
+
+
+
+@keyframes info {
+  from {
+    width: 0%;
+  }
+  to {
+    visibility: visible;
+    width: 100%;
+  }
+}
+
+/* Para pantallas de hasta 768px (tablets) */
+@media (max-width: 768px) {}
+
+
+/* Para pantallas de hasta 480px (móviles) */
+@media (max-width: 490px) {
+
+   .row-container {
+    display: flex;
+    justify-content: start;
+    align-items: start;
+    width: 100%;
+  }
+
+ .row-container h1 {
+    width: 180px;
+    text-align: start;
+    font-size: 40px;
+  }
+
+   .row-container p {
+    text-align: start;
+    width: auto;
+    font-size: 20px;
+  }
+
+  
+
+  .row-container .contact {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 60px;
+  }
+
+   .row-container .contact .cv {
+    font-size: 15px;
+  }
+
+
+  .separation {
+    display: none;
+  }
+}
+  </style>
