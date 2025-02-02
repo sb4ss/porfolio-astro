@@ -1,11 +1,19 @@
+---
+import Terminal from '../components/Terminal.astro'
+---
+
+
 <section id="" >
   <div class="container" >
     <div class="circle" ></div>
+    <div class="circle2" ></div>
+
     <h1>Hi</h1>
     <p class="im">I’m <forte class="bolder">Sebastián Zapata</forte></p>
     <h3>Full-Stack developer</h3>
     <h4>Cali, Colombia</h4>
     <button>Download CV</button>
+    <Terminal />
   </div>
 
 </section>
@@ -68,6 +76,17 @@
       left: -100px;
       z-index: -1;
       top: -130px;
+      border-radius: 100%;
+      position: absolute;
+      height: 300px;
+      border: #00b55191 solid 2px;
+      width: 300px;
+    }
+
+    .circle2{
+      right: 400px;
+      z-index: -1;
+      bottom: 40px;
       border-radius: 100%;
       position: absolute;
       height: 300px;
