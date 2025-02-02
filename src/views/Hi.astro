@@ -1,9 +1,10 @@
 <section id="" >
   <div class="container" >
+    <div class="circle" ></div>
     <h1>Hi</h1>
-    <h2>I'm <p class="bolder">Sebastián Zapata</p></h2>
+    <p class="im">I’m <forte class="bolder">Sebastián Zapata</forte></p>
     <h3>Full-Stack developer</h3>
-    <p>Cali, Colombia</p>
+    <h4>Cali, Colombia</h4>
     <button>Download CV</button>
   </div>
 
@@ -11,22 +12,65 @@
 <style>
 
     section{
+      position: relative;
       z-index: 2;
       padding-left: 100px;
       display: flex;
       align-items: center;
-      justify-content: center;
         background-color: transparent;
         height: 100%;
         width: 100%;
     }
 
     .container{
-      width: 300px;
+      font-weight: 100;
+      font-size: 40px;
+  
+      width: 400px;
       display: flex;
       flex-direction: column;
       align-items: start;
-      color: #CEFFD5;
+      color: #FFFFFF;
       font-family: 'League Spartan', sans-serif;
+    }
+
+    .container .im .bolder{
+      color: #00B551;
+      font-weight: 750;
+    }
+
+    .container h3{
+      font-size: 30px;
+      font-weight: 400;
+      color: #90ff9f;
+      
+    }
+
+    .container h4{
+      font-size: 25px;
+      font-weight: 400;
+      color: #90ff9f8f;
+    }
+
+    .container button{
+      width: 200px;
+      border-radius: 25px;
+      padding: 20px;
+      font-weight: 500;
+      background-color: #00B551;
+      font-size: 20px;
+      position: absolute;
+      left: 300px;
+      bottom: 110px;
+      color: #ffffffd5;
+    }
+    .circle{
+      z-index: -1;
+      top: 0;
+      border-radius: 100%;
+      position: absolute;
+      height: 300px;
+      border: #00b55191 solid 2px;
+      width: 300px;
     }
 </style>
