@@ -20,6 +20,7 @@ import Terminal from '../components/Terminal.astro'
 <style>
 
     section{
+      overflow-x: hidden;
       position: relative;
       z-index: 2;
       padding-left: 100px;
@@ -154,12 +155,17 @@ import Terminal from '../components/Terminal.astro'
        
       }
       .circle2{
-        right: -100px;
+        right: -180px;
        }
       .container{
+        flex-direction: column;
         display: flex;
       align-items: center;
       justify-content: center;
+      }
+
+      .container button{
+        position: relative;
       }
        
     }
