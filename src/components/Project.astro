@@ -10,13 +10,37 @@ const projectsCard = await getCollection("projects")
             const {data} = card
             const {title, desc,img, tech} = data
             return(
-                <div>
+          
                     <h2>{title}</h2>
+                    <img src={`${img}`} alt="imagen" style="height: 300px;"/>
                     <p>{desc}</p>
-                    <img src={`/${img}`} alt="" />
                     <p>{tech}</p>
-                </div>
+              
             )
         }) 
     }
 </div>
+
+<style>
+    .card{
+        color: #ffff;
+        border-radius: 15px;
+        padding: 20px;
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 15px;
+        width: 300px;
+        flex-direction: column;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: rgb(53, 53, 53);
+    }
+
+    .card h3{
+
+    }
+  
+</style>
