@@ -1,4 +1,4 @@
-<nav class=" h-12  absolute w-full bg-white flex items-center " >
+<nav class=" h-12  absolute w-full bg-white flex items-center  navbar ">
     <ul class="w-full flex flex-row   items-center" >
         <li><a href="#projects">Projects</a></li>
         <li><a href="/">Blog</a></li>
@@ -6,6 +6,7 @@
         <li><a href="#contact">Contact</a></li>
         <li><a href="#about">About me</a></li>
     </ul>
+    <button class="nav" >0</button>
 </nav>
 
 <style>
@@ -43,8 +44,23 @@
     }
 
     nav{
+        left: -300px;
         height: 100vh;
         width: 300px;
+        transition: left 0.5s;
+    }
+
+    .navActive{
+        transition: 0.5s;
+        left: 0px;
+    }
+
+    .nav{
+        position: absolute;
+        top: 0;
+        width: 30px;
+        height: 30px;
+        background-color: red;
     }
  }
 </style>
