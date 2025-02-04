@@ -1,11 +1,12 @@
 ---
-import { getCollection } from "astro:content"
-const projects = await getCollection('projects')
+import { getCollection } from "astro:content";
+const projectsCard = await getCollection("projects")
+
 ---
 
 <div class="card" >
-    {
-        projects.map(card=>{
+    { 
+        projectsCard.map(card=>{
             const {data} = card
             const {title, desc,img, tech} = data
             return(
@@ -16,6 +17,6 @@ const projects = await getCollection('projects')
                     <p>{tech}</p>
                 </div>
             )
-        })
+        }) 
     }
 </div>

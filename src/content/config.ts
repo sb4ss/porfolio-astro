@@ -9,4 +9,5 @@ const projects = defineCollection({
   }),
 });
 
-export const collections = { projects };
+const collections = { projects };
+export default collections;
