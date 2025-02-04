@@ -5,6 +5,8 @@
 
 
 <section id="skills">
+  <div class="circle" ></div>
+    <div class="circle2" ></div>
   <h3>Skills and Tools</h3>
   <div class="backend" ><p>Backend</p>
   <img src="js.png" alt="javascript" />
@@ -28,6 +30,8 @@
     
   
   </div>
+
+
 </section>
 <style>
   .next{
@@ -39,7 +43,42 @@
     position: absolute;
     top: 30px;
   }
+  .circle{
+      left: -160px;
+      z-index: -1;
+      top: 40px;
+      border-radius: 100%;
+      position: absolute;
+      height: 300px;
+      border-left: #00b55191 solid 2px;
+     
+      width: 300px;
+      animation-name: rotate;
+      animation-duration: 0.6s;
+      animation-delay: 0.2s;
+      animation-fill-mode: forwards;
+      transform: rotate(1deg);
+    
+    }
 
+    
+
+    .circle2{
+       border: #00b55100 solid 2px;
+      
+      animation-name: rotate;
+      animation-duration: 0.6s;
+      animation-delay: 0.5s;
+      animation-fill-mode: forwards;
+      right: 100px;
+      z-index: -1;
+      bottom: 70px;
+      border-radius: 100%;
+      position: absolute;
+      height: 200px;
+
+      width: 200px;
+    } 
   section div{
     display: flex;
     flex-direction: column;
