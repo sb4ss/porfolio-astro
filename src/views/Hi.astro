@@ -20,9 +20,6 @@ import Terminal from '../components/Terminal.astro'
 
 </section>
 <style>
-  .btn-nav{
-  
-  }
 
     section{
       overflow-x: hidden;
@@ -68,8 +65,6 @@ import Terminal from '../components/Terminal.astro'
       font-weight: 750;
     }
 
-    .btn-nav{
-    }
     .container h3{
       font-size: 30px;
       font-weight: 400;
@@ -153,6 +148,9 @@ import Terminal from '../components/Terminal.astro'
        }
     }
     @media screen and (max-width: 1100px) {
+      .btn-nav{
+      display: none;
+    }
       section{
         padding: 0;
         display: flex;
@@ -214,6 +212,11 @@ import Terminal from '../components/Terminal.astro'
        transition: 0.5s;
     }
 
+    @media screen and (max-width: 1100px) {
+      .btn-nav{
+        display: block;
+      }
+    }
     }
 </style>
 <script>
