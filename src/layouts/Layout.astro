@@ -28,11 +28,13 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
 	</head>
-	<body>
+	<body class="body" >
 		
 		<slot />
 	</body>
-	<script src="https://kit.fontawesome.com/c0fd647dc6.js" crossorigin="anonymous"></script>
+	<script>
+		import "../components/Navbar.js"
+	  </script>
 </html>
 
 <style>
@@ -50,6 +52,12 @@
 		height: 3400px;
 		z-index: 1;
 	}
+
+	.noscroll{
+       
+       overflow-y:hidden;
+   }
+
 	
 
 
