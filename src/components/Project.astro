@@ -1,29 +1,30 @@
 ---
 import { getCollection } from "astro:content";
 const projectsCard = await getCollection("projects");
+import JS from "../components/stack/JS.astro"
 ---
 <div class="container">
-
     {projectsCard.map((card) => {
         const { data } = card;
         const { title, desc, img, tech } = data;
+        const Render = true;
+        
         return (
-            <div class="card" >
-              
-                <div >
-                    <h2 >{title}</h2>
-                    <img src={img} alt="imagen"  />
-
-                    <p >{desc}</p>
-                    <div class="tech" >
-                        {tech.split(",").map((item) => (
-                            <span >{item.trim()}</span>
-                        ))}
-                    </div>
-                </div>
+          <div class="card">
+            <div>
+              <h2>{title}</h2>
+              <img src={img} alt="imagen" />
+              <p>{desc}</p>
+              <div class="tech">
+                {Object.values(tech).map((techName) => (
+                  Render && techName === "JavaScript" ? <JS /> : null
+                ))}
+              </div>
             </div>
+          </div>
         );
-    })}
+      })}
+      
 
     <div/>
 <style>
