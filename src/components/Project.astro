@@ -2,6 +2,7 @@
 import { getCollection } from "astro:content";
 const projectsCard = await getCollection("projects");
 import JS from "../components/stack/JS.astro"
+import Node from "../components/stack/Node.astro"
 ---
 <div class="container">
     {projectsCard.map((card) => {
@@ -17,7 +18,10 @@ import JS from "../components/stack/JS.astro"
               <p>{desc}</p>
               <div class="tech">
                 {Object.values(tech).map((techName) => (
-                  Render && techName === "JavaScript" ? <JS /> : null
+                    <> 
+                  {Render && techName === "JavaScript" ? <JS /> : null}
+                  {Render && techName === "Node" ? <Node /> : null}
+                  </>
                 ))}
               </div>
             </div>
