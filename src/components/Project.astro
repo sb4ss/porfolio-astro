@@ -7,14 +7,18 @@ import Node from "../components/stack/Node.astro"
 <div class="container">
     {projectsCard.map((card) => {
         const { data } = card;
-        const { title, desc, img, tech, link } = data;
+        const { title, desc, img, tech, link,github } = data;
         const Render = true;
         
         return (
           <div class="card">
             <div class="title" >
               <h2>{title}</h2>
-              <a href={`${link}`}><i class="fa-brands fa-github"></i></a>
+              <div class="links" >
+              <a href={`${github}`}><i class="fa-brands fa-github"></i></a>
+              <a href={`${link}`}><i class="fa-solid fa-link"></i></a>
+
+              </div>
             </div>
               
               <img src={img} alt="imagen" />
@@ -90,6 +94,8 @@ import Node from "../components/stack/Node.astro"
     }
   
     .title{
+      margin-bottom: 30px;
+        position: relative;
         display: flex;
         align-items: center;
         font-size: 20px;
@@ -102,6 +108,14 @@ import Node from "../components/stack/Node.astro"
     align-items: center;
     justify-content: center;
     height: 90px;
+  }
+
+  .links{
+    display: flex;
+    justify-content: end;
+    right: 0;
+    position: absolute;
+    width: 30%;
   }
 </style>
 
