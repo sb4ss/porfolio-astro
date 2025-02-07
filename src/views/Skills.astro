@@ -4,7 +4,9 @@
 ---
 
 
-<section id="skills">
+
+<section id="skills" class="fade-in">
+
     <div class="circle2" ></div>
   <h3>Skills and Tools</h3>
   <div class="backend" ><p>Backend</p>
@@ -33,6 +35,17 @@
 
 </section>
 <style>
+
+.fade-in {
+  transition: opacity 0.7s ease-in-out, transform 0.2s ease-in-out;
+  opacity: 0;
+  transform: translateY(5px);
+}
+
+.fade-in.load {
+  opacity: 1;
+  transform: translateY(0);
+}
   .next{
     border-radius: 100%;
     background-color: #FFFFFF;
