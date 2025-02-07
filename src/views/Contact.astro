@@ -6,16 +6,16 @@
 <h2>Let's connect</h2>
 <form class="formulario">
     <label for="name">Your name</label>
-    <input type="text" id="name" required>
+    <input type="text" id="name" autocomplete="off" required>
 
     <label for="email">Your email</label>
-    <input type="email" id="email" required>
+    <input type="email" id="email" autocomplete="off"required>
 
     <label for="asunto">Subject</label>
-    <input type="text" id="asunto" required>
+    <input type="text" id="asunto"autocomplete="off" required>
 
     <label for="info">Additional information</label>
-    <textarea id="info" required></textarea>
+    <textarea id="info" class="text"autocomplete="off" required></textarea>
 
    
 
@@ -33,8 +33,8 @@
       position: relative;
       z-index: 2;
       display: flex;
-      align-items: center;
-
+      align-items: start;
+      padding-left: 100px;
         height: 680px;
         width: 100%;
         gap: 50px;
@@ -56,6 +56,7 @@
 }
 
     .formulario{
+      position: relative;
       width: 500px;
       border-radius: 20px;
       font-size: 15px;
@@ -69,10 +70,58 @@
     }
 
     .formulario input{
+      color: aliceblue;
+      font-weight: 400;
+      padding: 10px;
+      outline: none;
       height: 35px;
       border-radius: 10px;
       margin-bottom: 20px;
       background-color: rgb(37, 37, 37);
+    }
+
+    .formulario .text {
+  color: aliceblue;
+  font-weight: 400;
+  display: flex;
+  outline: none;
+  padding: 10px;
+  width: 100%;
+  max-height: 80px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  background-color: rgb(37, 37, 37);
+  overflow-y: auto; 
+}
+
+/* Scrollbar minimalista */
+.formulario .text::-webkit-scrollbar {
+  width: 6px; /* Ancho de la barra */
+}
+
+.formulario .text::-webkit-scrollbar-track {
+  background: transparent; 
+}
+
+.formulario .text::-webkit-scrollbar-thumb {
+  background: rgba(100, 100, 100, 0.5);
+  border-radius: 3px;
+}
+
+.formulario .text::-webkit-scrollbar-thumb:hover {
+  background: rgba(100, 100, 100, 0.8);
+}
+
+
+    .formulario button{
+      left: 50%;
+      transform: translateX(-50%);
+      bottom: -20px;
+      border-radius: 10px;
+      height: 35px;
+      position: absolute;
+      width: 100px;
+      background-color: #008f40;
     }
 
    
