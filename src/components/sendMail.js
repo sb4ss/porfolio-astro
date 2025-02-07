@@ -20,13 +20,16 @@ document
 
 async function sendinfotobackend(data) {
   try {
-    const response = await fetch(" http://localhost:3000/api/send", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-    });
+    const response = await fetch(
+      " https://form-processor-production.up.railway.app/api/send",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      }
+    );
 
     if (!response.ok) {
       throw new Error("Error al enviar los datos");
