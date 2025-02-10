@@ -16,8 +16,11 @@ document
     };
 
     await sendinfotobackend(data);
-    const alert = document.querySelectorAll(".alert");
-    alert.classname.toggle("alertActive");
+    const alert = document.querySelectorAll("alert");
+    alert.classname.add("alertActive");
+    setTimeout(() => {
+      alert.classname.remove("alertActive");
+    }, 1000);
   });
 
 async function sendinfotobackend(data) {
