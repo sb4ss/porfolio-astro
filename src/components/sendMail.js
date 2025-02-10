@@ -16,6 +16,8 @@ document
     };
 
     await sendinfotobackend(data);
+    const alert = document.querySelectorAll(".alert");
+    alert.classname.toggle("alertActive");
   });
 
 async function sendinfotobackend(data) {

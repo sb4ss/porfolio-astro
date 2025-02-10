@@ -19,7 +19,8 @@
 
    
 
-    <button class="submit">Send</button>
+    <button class="submit" >Send</button>
+    
 </form>
 <div class="row" >
   <h3>I'm also here</h3>
@@ -28,11 +29,27 @@
     <a href="https://www.linkedin.com/in/sebastian-zapata-450859302/"> <i class="fa-brands fa-linkedin"></i> </a>
     <a href="mailto:sebaszapata2022@gmail.com"> <i class="fa-solid fa-envelope"></i> </a>
     <a href="http://t.me/sb4ss18674"> <i class="fa-brands fa-telegram"></i> </a>
-
   </div>
+  <img src="mail2.svg" alt="" class="mail" >
 </div>
 </section>
 <style>
+
+  .row{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 500px;
+    height: 100%;
+  }
+
+  .mail{
+    opacity: 20%;
+    z-index: -1;
+    height: 400px;
+    position: absolute;
+  }
 
  
      section{
@@ -47,9 +64,11 @@
       display: flex;
       align-items: start;
       padding-left: 100px;
+
         height: 680px;
         width: 100%;
         gap: 50px;
+        flex-wrap: wrap;
     }
     section:before {
  	 content: "";
