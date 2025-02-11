@@ -30,7 +30,7 @@ document
 async function sendinfotobackend(data) {
   try {
     const response = await fetch(
-      " https://form-processor-production.up.railway.app/api/sen",
+      " https://form-processor-production.up.railway.app/api/send",
       {
         method: "POST",
         headers: {
