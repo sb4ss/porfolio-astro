@@ -18,30 +18,27 @@ import Send from "../components/Send.astro";
 
     <label for="info">Additional information</label>
     <textarea id="info" class="text"autocomplete="off" required></textarea>
-
-   
-
     <button class="submit" >Send</button>
 </form>
 <Send/> 
 
 <div class="row" >
-  <h3>I'm also here</h3>
+  <h3>My socials</h3>
   <div class="social" >
     <a href="https://github.com/sb4ss"> <i class="fa-brands fa-github"></i> </a>
     <a href="https://www.linkedin.com/in/sebastian-zapata-450859302/"> <i class="fa-brands fa-linkedin"></i> </a>
     <a href="mailto:sebaszapata2022@gmail.com"> <i class="fa-solid fa-envelope"></i> </a>
     <a href="http://t.me/sb4ss18674"> <i class="fa-brands fa-telegram"></i> </a>
   </div>
-  <img src="mail2.svg" alt="" class="mail" >
-</div>
+  </div>
 </section>
 <style>
 
   .row{
+    font-size: 25px;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: start;
     flex-direction: column;
     width: 500px;
     height: 100%;
@@ -58,17 +55,17 @@ import Send from "../components/Send.astro";
      section{
 
       font-weight: 700;
-        font-size: 40px;
-        color: #abffd1;
+      font-size: 40px;
+      color: #abffd1;
+        justify-content: center;
         flex-direction: column;
       overflow-x: hidden;
       position: relative;
       z-index: 2;
       display: flex;
-      align-items: start;
-      padding-left: 100px;
+      align-items: center;
 
-        height: 680px;
+        height: auto;
         width: 100%;
         gap: 50px;
         flex-wrap: wrap;
