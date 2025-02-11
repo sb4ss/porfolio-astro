@@ -1,3 +1,7 @@
+function alertMail() {
+  console.log("alert");
+}
+
 document
   .querySelector(".formulario")
   .addEventListener("submit", async function (event) {
@@ -16,11 +20,11 @@ document
     };
 
     await sendinfotobackend(data);
-    const alert = document.querySelectorAll("alert");
-    alert.classname.add("alertActive");
+    document.querySelector(".alert").classList.add("alertActive");
     setTimeout(() => {
-      alert.classname.remove("alertActive");
-    }, 1000);
+      document.querySelector(".alert").classList.remove("alertActive");
+    }, 2000);
+    this.reset();
   });
 
 async function sendinfotobackend(data) {
