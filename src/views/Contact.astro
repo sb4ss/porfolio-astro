@@ -161,6 +161,7 @@ import Send from "../components/Send.astro";
    
     @media screen and (max-width: 1000px) {
        section{
+        flex-direction: column;
         align-items: center;
         padding: 0;
        }
@@ -169,6 +170,17 @@ import Send from "../components/Send.astro";
     @media screen and (max-width: 580px) {
        .formulario{
         width: 350px;
+       }
+    }
+
+    @media screen and (max-width: 1200px) {
+      
+      .row{
+        width: 300px;
+      }
+      
+      .mail{
+        height: 300px;
        }
     }
 </style>
