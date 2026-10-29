@@ -1,189 +1,121 @@
 ---
-import Send from "../components/Send.astro";
-
-
+import Send from '../components/Send.astro';
 ---
 
-<section id="contact">
-<h2>Let's connect</h2>
-<form class="formulario">
-    <label for="name">Your name</label>
-    <input type="text" id="name" autocomplete="off" required>
+<section id="contact" aria-labelledby="contact-title">
+  <div class="contact-layout">
+    <div class="contact-intro">
+      <p class="eyebrow">CONTACT</p>
+      <h2 id="contact-title">Let's connect<span aria-hidden="true">.</span></h2>
+      <p class="intro-copy">Have a project in mind or just want to say hi? I'd love to hear from you.</p>
+      <a class="email-link" href="mailto:sebaszapata2022@gmail.com">
+        <i class="fa-regular fa-envelope" aria-hidden="true"></i>
+        <span>sebaszapata2022@gmail.com</span>
+        <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
+      </a>
+      <div class="socials">
+        <p>Find me online</p>
+        <div class="social-links">
+          <a href="https://github.com/sb4ss" aria-label="GitHub"><i class="fa-brands fa-github" aria-hidden="true"></i><span>GitHub</span></a>
+          <a href="https://www.linkedin.com/in/sebastian-zapata-450859302/" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in" aria-hidden="true"></i><span>LinkedIn</span></a>
+          <a href="http://t.me/sb4ss18674" aria-label="Telegram"><i class="fa-brands fa-telegram" aria-hidden="true"></i><span>Telegram</span></a>
+        </div>
+      </div>
+    </div>
 
-    <label for="email">Your email</label>
-    <input type="email" id="email" autocomplete="off"required>
-
-    <label for="asunto">Subject</label>
-    <input type="text" id="asunto"autocomplete="off" required>
-
-    <label for="info">Additional information</label>
-    <textarea id="info" class="text"autocomplete="off" required></textarea>
-    <button class="submit" >Send</button>
-</form>
-<Send/> 
-
-<div class="row" >
-  <h3>My socials</h3>
-  <div class="social" >
-    <a href="https://github.com/sb4ss"> <i class="fa-brands fa-github"></i> </a>
-    <a href="https://www.linkedin.com/in/sebastian-zapata-450859302/"> <i class="fa-brands fa-linkedin"></i> </a>
-    <a href="mailto:sebaszapata2022@gmail.com"> <i class="fa-solid fa-envelope"></i> </a>
-    <a href="http://t.me/sb4ss18674"> <i class="fa-brands fa-telegram"></i> </a>
-  </div>
+    <form class="formulario" aria-labelledby="form-title" aria-describedby="contact-status">
+      <h3 id="form-title">Send a message</h3>
+      <div class="field-row">
+        <div class="field">
+          <label for="name">Your name</label>
+          <input type="text" id="name" name="name" autocomplete="name" maxlength="100" placeholder="Your name" required />
+        </div>
+        <div class="field">
+          <label for="email">Your email</label>
+          <input type="email" id="email" name="email" autocomplete="email" maxlength="254" placeholder="you@example.com" required />
+        </div>
+      </div>
+      <div class="field">
+        <label for="asunto">Subject</label>
+        <input type="text" id="asunto" name="subject" maxlength="160" placeholder="What would you like to talk about?" required />
+      </div>
+      <div class="field">
+        <label for="info">Your message</label>
+        <textarea id="info" name="message" rows="5" minlength="10" maxlength="5000" placeholder="Tell me a little about your idea…" required></textarea>
+      </div>
+      <div class="honeypot" aria-hidden="true">
+        <label for="website">Leave this field empty</label>
+        <input id="website" name="website" type="text" tabindex="-1" autocomplete="off" />
+      </div>
+      <button class="submit" type="submit"><span>Send message</span><i class="fa-solid fa-arrow-right" aria-hidden="true"></i></button>
+      <Send />
+      <noscript><p>Please enable JavaScript to use this form, or <a href="mailto:sebaszapata2022@gmail.com">send me an email directly</a>.</p></noscript>
+    </form>
   </div>
 </section>
+
 <style>
-
-  .row{
-    color: #d3d3d3;
-    font-size: 25px;
-    display: flex;
-    align-items: center;
-    justify-content: start;
-    flex-direction: column;
-    width: 500px;
-    height: 100%;
-  }
-
-  .mail{
-    opacity: 20%;
-    z-index: -1;
-    height: 400px;
-    position: absolute;
-  }
-
- 
-     section{
-
-      font-weight: 700;
-      font-size: 40px;
-      color: #abffd1;
-        justify-content: center;
-        flex-direction: column;
-      overflow-x: hidden;
-      position: relative;
-      z-index: 2;
-      display: flex;
-      align-items: center;
-
-        height: auto;
-        width: 100%;
-        gap: 50px;
-        flex-wrap: wrap;
-    }
-    section:before {
- 	 content: "";
-	  background-color: transparent;
-  	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 600'%3E%3Cfilter id='a'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23a)'/%3E%3C/svg%3E");
-  	background-repeat: repeat;
- 	 background-size: 182px;
- 	 opacity: 0.1;
- 	 top: 0;
- 	 left: 0;
- 	 position: absolute;
- 	 width: 100%;
- 	 height: 100%;
-	  z-index: -1;
-
-}
-
-    .formulario{
-      position: relative;
-      width: 500px;
-      border-radius: 20px;
-      font-size: 15px;
-      height: 550px;
-      padding: 30px;
-      display: flex;
-      background-color: rgb(24, 24, 24);
-      
-      flex-direction: column;
-      justify-content: space-around;
-    }
-
-    .formulario input{
-      color: aliceblue;
-      font-weight: 400;
-      padding: 10px;
-      outline: none;
-      height: 35px;
-      border-radius: 10px;
-      margin-bottom: 20px;
-      background-color: rgb(37, 37, 37);
-    }
-
-    .formulario .text {
-  color: aliceblue;
-  font-weight: 400;
-  display: flex;
-  outline: none;
-  padding: 10px;
+  section:before {
+  content: "";
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 600'%3E%3Cfilter id='a'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23a)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 182px;
+  opacity: 0.1;
+  top: 0;
+  left: 0;
+  position: absolute;
   width: 100%;
-  max-height: 80px;
-  border-radius: 10px;
-  margin-bottom: 20px;
-  background-color: rgb(37, 37, 37);
-  overflow-y: auto; 
+  height: 100%;
+  z-index: -1;
+
 }
-
-/* Scrollbar minimalista */
-.formulario .text::-webkit-scrollbar {
-  width: 6px; /* Ancho de la barra */
-}
-
-.formulario .text::-webkit-scrollbar-track {
-  background: transparent; 
-}
-
-.formulario .text::-webkit-scrollbar-thumb {
-  background: rgba(100, 100, 100, 0.5);
-  border-radius: 3px;
-}
-
-.formulario .text::-webkit-scrollbar-thumb:hover {
-  background: rgba(100, 100, 100, 0.8);
-}
-
-
-    .formulario button{
-      left: 50%;
-      transform: translateX(-50%);
-      bottom: -20px;
-      border-radius: 10px;
-      height: 45px;
-      position: absolute;
-      width: 140px;
-      background-color: #008f40;
-    }
-
-   
-    @media screen and (max-width: 1000px) {
-       section{
-        flex-direction: column;
-        align-items: center;
-        padding: 0;
-       }
-    }
-
-    @media screen and (max-width: 580px) {
-       .formulario{
-        width: 350px;
-       }
-    }
-
-    @media screen and (max-width: 1200px) {
-      
-      .row{
-        width: 300px;
-      }
-      
-      .mail{
-        height: 300px;
-       }
-    }
+  section { position: relative; z-index: 2; width: 100%; padding: 48px 32px 64px; font-family: 'League Spartan', sans-serif; }
+  .contact-layout { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); align-items: center; gap: clamp(36px, 6vw, 88px); max-width: 1060px; margin: 0 auto; }
+  .eyebrow { color: #90ff9f; font-size: 13px; letter-spacing: .18em; font-weight: 500; margin-bottom: 24px; }
+  h2 { color: #abffd1; font-size: clamp(42px, 4.8vw, 62px); font-weight: 600; line-height: 1.05; letter-spacing: -.035em; }
+  h2 span { color: #00b551; }
+  .intro-copy { color: #b8b8b8; max-width: 340px; font-size: 19px; line-height: 1.6; margin-top: 22px; }
+  .email-link { display: flex; align-items: center; gap: 12px; color: #f0f8ff; min-height: 48px; margin-top: 28px; font-size: 16px; }
+  .email-link span { overflow-wrap: anywhere; min-width: 0; }
+  .email-link > i:first-child { color: #90ff9f; font-size: 20px; }
+  .email-link > i:last-child { color: #8a8a8a; font-size: 11px; }
+  .socials { margin-top: 40px; padding-top: 24px; border-top: 1px solid #ffffff14; }
+  .socials > p { color: #a7a7a7; font-size: 14px; margin-bottom: 14px; }
+  .social-links { display: flex; flex-wrap: wrap; gap: 10px; }
+  .social-links a { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 44px; padding: 0 12px; border: 1px solid #ffffff20; border-radius: 10px; color: #d3d3d3; font-size: 14px; transition: border-color .2s, color .2s; }
+  .social-links a:hover, .email-link:hover { color: #90ff9f; border-color: #00b551; }
+  .formulario { min-width: 0; background: #181818; border: 1px solid #ffffff14; border-radius: 20px; padding: clamp(24px, 3vw, 36px); display: flex; flex-direction: column; gap: 22px; }
+  h3 { color: #f0f8ff; font-weight: 500; font-size: 24px; margin-bottom: 4px; }
+  .field-row { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+  .field { display: flex; flex-direction: column; gap: 8px; min-width: 0; }
+  label { color: #d3d3d3; font-size: 15px; font-weight: 500; }
+  input, textarea { width: 100%; min-width: 0; color: #f0f8ff; background: #252525; border: 1px solid #ffffff12; border-radius: 10px; padding: 13px 14px; font-family: inherit; font-size: 16px; line-height: 1.5; transition: border-color .2s; }
+  input { min-height: 48px; }
+  textarea { min-height: 140px; resize: vertical; }
+  input::placeholder, textarea::placeholder { color: #8d8d8d; opacity: 1; }
+  input:focus, textarea:focus { outline: 2px solid #00b551; outline-offset: 2px; border-color: transparent; }
+  a:focus-visible, button:focus-visible { outline: 2px solid #90ff9f; outline-offset: 4px; }
+  .submit { min-height: 50px; display: flex; align-items: center; justify-content: center; gap: 14px; color: white; background: #008f40; border: 1px solid transparent; border-radius: 10px; font-size: 17px; font-weight: 500; transition: background .2s; }
+  .submit:hover:not(:disabled) { background: #00a349; }
+  .submit:disabled { cursor: wait; opacity: .65; }
+  .honeypot { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+  noscript { color: #b8b8b8; font-size: 15px; }
+  noscript a { text-decoration: underline; }
+  @media (max-width: 800px) {
+    section { padding: 32px 20px 48px; }
+    .contact-layout { grid-template-columns: minmax(0, 1fr); max-width: 560px; gap: 32px; }
+    .intro-copy { max-width: 440px; }
+    .socials { margin-top: 20px; padding-top: 20px; }
+    .eyebrow { margin-bottom: 16px; }
+  }
+  @media (max-width: 480px) {
+    .field-row { grid-template-columns: minmax(0, 1fr); gap: 22px; }
+    .formulario { padding: 20px; }
+    .social-links { gap: 8px; }
+    .social-links a { padding: 0 10px; }
+  }
+  @media (prefers-reduced-motion: reduce) { a, input, textarea, button { transition: none; } }
 </style>
 <script>
-import "../components/sendMail.js"
-
-
+  import '../components/sendMail.js';
 </script>

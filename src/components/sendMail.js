@@ -1,52 +1,61 @@
-function alertMail() {
-  console.log("alert");
-}
+import { setLocalizedText } from '../i18n/client.js';
+const form = document.querySelector('.formulario');
+const button = form.querySelector('button[type="submit"]');
+const buttonText = button.querySelector('span');
+const status = document.getElementById('contact-status');
+let pending = false;
+let lastPayload = '';
+let requestId;
 
-document
-  .querySelector(".formulario")
-  .addEventListener("submit", async function (event) {
-    event.preventDefault();
-
-    let nameValue = document.getElementById("name").value;
-    let emailValue = document.getElementById("email").value;
-    let infoValue = document.getElementById("info").value;
-    let asuntoValue = document.getElementById("asunto").value;
-
-    const data = {
-      name: nameValue,
-      from: emailValue,
-      message: infoValue,
-      subject: asuntoValue,
-    };
-
-    await sendinfotobackend(data);
-    document.querySelector(".alert").classList.add("alertActive");
-    setTimeout(() => {
-      document.querySelector(".alert").classList.remove("alertActive");
-    }, 2000);
-    this.reset();
-  });
-
-async function sendinfotobackend(data) {
-  try {
-    const response = await fetch(
-      " https://form-processor-production.up.railway.app/api/send",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
-      }
-    );
-
-    if (!response.ok) {
-      throw new Error("Error al enviar los datos");
-    }
-
-    const result = await response.json();
-    console.log("Respuesta del backend:", result);
-  } catch (error) {
-    console.error("Error:", error);
+form.addEventListener('submit', async event => {
+  event.preventDefault();
+  if (pending || !form.reportValidity()) return;
+  const fields = new FormData(form);
+  const payload = {
+    name: String(fields.get('name') || '').trim(),
+    email: String(fields.get('email') || '').trim(),
+    subject: String(fields.get('subject') || '').trim(),
+    message: String(fields.get('message') || '').trim(),
+    website: String(fields.get('website') || ''),
+  };
+  const serialized = JSON.stringify(payload);
+  if (serialized !== lastPayload || !requestId) {
+    requestId = crypto.randomUUID();
+    lastPayload = serialized;
   }
-}
+  pending = true;
+  button.disabled = true;
+  setLocalizedText(buttonText, 'Sending…');
+  form.setAttribute('aria-busy', 'true');
+  status.dataset.state = 'pending';
+  setLocalizedText(status, 'Sending your message…');
+  try {
+    const response = await fetch('/api/contact', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ ...payload, requestId }),
+      signal: AbortSignal.timeout(20000),
+    });
+    const result = await response.json().catch(() => null);
+    if (!response.ok || result?.ok !== true) {
+      throw new Error(result?.message || 'Your message could not be sent. Please try again or email me directly.');
+    }
+    status.dataset.state = 'success';
+    setLocalizedText(status, 'Message sent. Thanks for reaching out!');
+    form.reset();
+    requestId = undefined;
+    lastPayload = '';
+  } catch (error) {
+    status.dataset.state = 'error';
+    setLocalizedText(status, error.name === 'TimeoutError'
+      ? 'The request timed out. Your message is still here; please try again.'
+      : error instanceof TypeError
+        ? 'Unable to connect. Your message is still here; please try again or email me directly.'
+        : error.message);
+  } finally {
+    pending = false;
+    button.disabled = false;
+    setLocalizedText(buttonText, 'Send message');
+    form.removeAttribute('aria-busy');
+  }
+});
