@@ -1,0 +1,46 @@
+<script>
+  import { gsap } from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+  gsap.registerPlugin(ScrollTrigger);
+
+  const media = gsap.matchMedia();
+  const initialHash = location.hash;
+  media.add('(prefers-reduced-motion: no-preference)', () => {
+    const defaults = { duration: .8, ease: 'power2.out', clearProps: 'opacity,visibility,transform' };
+    gsap.from('#main-navigation, .language-switch', { ...defaults, autoAlpha: 0, duration: .6 });
+    const hero = gsap.timeline({ defaults });
+    hero.from('.hero .personal > :not(.hero-actions)', { y: 22, autoAlpha: 0, stagger: .09 })
+      .from('.hero [data-cv-request]', { y: 16, autoAlpha: 0 }, '-=.45')
+      .from('.hero .terminal-scene', { y: 24, autoAlpha: 0 }, '-=.55');
+
+    function reveal(selector, trigger) {
+      const elements = gsap.utils.toArray(selector);
+      if (!elements.length) return;
+      gsap.from(elements, {
+        ...defaults, y: 26, autoAlpha: 0, stagger: .09,
+        scrollTrigger: { trigger, start: 'top 90%', once: true },
+      });
+    }
+    reveal('#skills .skills-heading', '#skills');
+    document.querySelectorAll('#skills .skill-group').forEach(group => {
+      reveal(group, group);
+    });
+    reveal('#projects > h3, .featured-tuki', '#projects');
+    reveal('.more-projects, .project-carousel', '.more-projects');
+    reveal('#contact .contact-intro > *, #contact .formulario', '#contact');
+    reveal('#about .about-copy, #about .about-photo', '#about');
+    reveal('#github header, #github .github-panel', '#github');
+
+    const refresh = () => ScrollTrigger.refresh();
+    document.fonts.ready.then(() => {
+      refresh();
+      if (initialHash && location.hash === initialHash) {
+        document.getElementById(initialHash.slice(1))?.scrollIntoView({ behavior: 'instant', block: 'start' });
+      }
+    });
+    document.querySelectorAll('img').forEach(img => {
+      if (!img.complete) img.addEventListener('load', refresh, { once: true });
+    });
+  });
+  document.addEventListener('astro:before-swap', () => media.revert(), { once: true });
+</script>
