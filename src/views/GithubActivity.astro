@@ -1,0 +1,70 @@
+<section id="github" aria-labelledby="github-title">
+  <div class="github-content">
+    <header>
+      <div><h2 id="github-title">GitHub activity</h2><p>Contribution calendar from my GitHub profile.</p></div>
+      <a class="profile-link" href="https://github.com/sb4ss"><i class="fa-brands fa-github" aria-hidden="true"></i><span>@sb4ss</span><i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
+    </header>
+    <div class="github-panel">
+      <div class="activity-summary">
+        <p><strong data-contribution-total>—</strong><span>contributions in the last year</span></p>
+        <p><strong data-active-days>—</strong><span>active days</span></p>
+      </div>
+      <div class="calendar-scroll" tabindex="0" role="region" aria-label="Contribution calendar">
+        <div class="calendar-loading" data-calendar-placeholder>Loading contribution calendar…</div>
+        <div class="contribution-calendar" data-calendar hidden>
+          <div class="calendar-months" data-calendar-months aria-hidden="true"></div>
+          <div class="calendar-days" data-calendar-days role="list"></div>
+        </div>
+      </div>
+      <div class="calendar-footer">
+        <p data-activity-status role="status">Data from GitHub</p>
+        <div class="legend"><span>Less</span><span class="levels" aria-hidden="true"><i data-level="0"></i><i data-level="1"></i><i data-level="2"></i><i data-level="3"></i><i data-level="4"></i></span><span>More</span></div>
+      </div>
+      <p class="calendar-note">Includes the contributions visible on my GitHub profile.</p>
+    </div>
+    <footer><span>Sebastián Zapata</span><a href="#home"><span>Back to top</span><i class="fa-solid fa-arrow-up" aria-hidden="true"></i></a></footer>
+  </div>
+</section>
+<script>
+  import { initializeGithub } from '../components/github-client.js';
+  initializeGithub();
+</script>
+<style>
+  section { position: relative; z-index: 2; padding: 64px 20px 28px; font-family: 'League Spartan', sans-serif; color: #e5e9e6; }
+  .github-content { max-width: 1060px; width: 100%; margin-inline: auto; }
+  header { display: flex; justify-content: space-between; align-items: center; gap: 24px; margin-bottom: 30px; }
+  h2 { font-size: clamp(30px, 4vw, 40px); line-height: 1.15; font-weight: 700; color: #abffd1; margin-bottom: 12px; }
+  header p { color: #b8c3bc; font-size: 17px; line-height: 1.5; }
+  .profile-link { display: inline-flex; align-items: center; gap: 10px; min-height: 44px; font-size: 16px; flex-shrink: 0; }
+  .profile-link i:last-child { font-size: 12px; }
+  .github-panel { border-top: 1px solid #ffffff1a; border-bottom: 1px solid #ffffff1a; padding: 28px 0; }
+  .activity-summary { display: flex; gap: 36px; margin-bottom: 28px; }
+  .activity-summary p { display: flex; align-items: baseline; flex-wrap: wrap; gap: 8px; color: #b8c3bc; font-size: 15px; }
+  .activity-summary strong { color: #e5e9e6; font-size: 26px; font-weight: 600; font-variant-numeric: tabular-nums; }
+  .calendar-scroll { overflow-x: auto; padding-bottom: 14px; scrollbar-color: #52685a #1a1f1b; }
+  .calendar-scroll:focus-visible, a:focus-visible { outline: 2px solid #abffd1; outline-offset: 4px; }
+  .calendar-loading { min-height: 126px; display: flex; align-items: center; color: #aab8ae; font-size: 15px; }
+  .calendar-loading[hidden] { display: none; }
+  .contribution-calendar { min-width: 760px; }
+  .calendar-months { display: grid; grid-template-columns: repeat(var(--weeks, 53), minmax(0, 1fr)); gap: 4px; height: 24px; font-size: 12px; color: #aab8ae; }
+  .calendar-days { display: grid; grid-auto-flow: column; grid-template-rows: repeat(7, 12px); grid-template-columns: repeat(var(--weeks, 53), minmax(0, 1fr)); gap: 4px; }
+  .calendar-days :global(.contribution-day) { display: block; height: 12px; border: 1px solid #ffffff06; border-radius: 3px; }
+  .calendar-days :global(.calendar-spacer) { visibility: hidden; }
+  .calendar-days :global([data-level="0"]), .levels [data-level="0"] { background: #29322b; }
+  .calendar-days :global([data-level="1"]), .levels [data-level="1"] { background: #28563b; }
+  .calendar-days :global([data-level="2"]), .levels [data-level="2"] { background: #3f8956; }
+  .calendar-days :global([data-level="3"]), .levels [data-level="3"] { background: #62b97b; }
+  .calendar-days :global([data-level="4"]), .levels [data-level="4"] { background: #a1e8b1; }
+  .calendar-footer { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; margin-top: 12px; font-size: 12px; color: #aab8ae; }
+  .legend, .levels { display: flex; gap: 5px; align-items: center; }
+  .legend { gap: 8px; }
+  .levels i { display: block; width: 12px; height: 12px; border-radius: 3px; }
+  .calendar-note { margin-top: 16px; color: #aab8ae; font-size: 12px; line-height: 1.5; }
+  footer { display: flex; justify-content: space-between; align-items: center; gap: 20px; padding: 32px 0 8px; color: #aab8ae; font-size: 14px; }
+  footer a { display: inline-flex; gap: 10px; align-items: center; min-height: 44px; }
+  @media (max-width: 600px) {
+    header { align-items: flex-start; flex-direction: column; gap: 12px; }
+    .github-panel { padding: 24px 0; }
+    .activity-summary { gap: 12px 24px; flex-wrap: wrap; }
+  }
+</style>
