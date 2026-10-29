@@ -1,0 +1,19 @@
+<div class="language-switch" role="group" aria-label="Choose language">
+  <button type="button" data-language="en" aria-label="English" aria-pressed="true" lang="en">EN</button>
+  <button type="button" data-language="es" aria-label="Spanish" aria-pressed="false" lang="es">ES</button>
+</div>
+<style>
+  .language-switch { position: fixed; top: 2px; right: 16px; z-index: 5; display: flex; padding: 2px; border: 1px solid #ffffff24; border-radius: 10px; background: #181818; font: 500 14px 'League Spartan', sans-serif; }
+  button { min-width: 44px; min-height: 40px; color: #b8b8b8; border-radius: 7px; }
+  button[aria-pressed="true"] { color: #abffd1; background: #303030; }
+  button:focus-visible { outline: 2px solid #00b551; outline-offset: 2px; }
+  @media (max-width: 800px) {
+    .language-switch { top: 16px; }
+    :global(body.noscroll) .language-switch { right: 76px; }
+    button { min-height: 44px; }
+  }
+</style>
+<script>
+  import { initializeLanguages } from '../i18n/client.js';
+  initializeLanguages();
+</script>
