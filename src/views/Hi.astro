@@ -1,262 +1,49 @@
 ---
-import Terminal from '../components/Terminal.astro'
-
+import Terminal from '../components/Terminal.astro';
 ---
-
-<script>
-  document.addEventListener("DOMContentLoaded", () => {
-    const fadeElements = document.querySelectorAll(".fade-in");
-    setTimeout(() => {
-      fadeElements.forEach(element => {
-        element.classList.add("load");
-      });
-    }, 100);
-  });
-</script>
-
-
-<section class="fade-in" >
-
-  <button class="btn-nav" ><i class="fa-solid fa-arrow-right"></i></button>
-  <div class="container"  >
-    <div class="circle" ></div>
-    <div class="circle2" ></div>
-    <div class="personal" >
-      <h1  >Hi</h1>
-    <p class="im">I’m <forte class="bolder">Sebastián Zapata</forte></p>
-    <h3>Full-Stack developer</h3>
-    <h4>Cali, Colombia</h4>
+<section class="hero" id="home" aria-labelledby="hero-title">
+  <button class="btn-nav" type="button" aria-label="Open navigation" aria-controls="main-navigation" aria-expanded="false"><i class="fa-solid fa-bars" aria-hidden="true"></i></button>
+  <div class="hero-layout">
+    <div class="personal">
+      <p class="greeting">Hi, I’m</p>
+      <h1 id="hero-title">Sebastián <span>Zapata</span></h1>
+      <p class="role">Full-Stack developer</p>
+      <p class="hero-description">I build web applications and automate everyday work.</p>
+      <p class="location"><i class="fa-solid fa-location-dot" aria-hidden="true"></i><span>Cali, Colombia</span></p>
+      <div class="hero-actions">
+        <a class="cv-button" href="#contact" data-cv-request><i class="fa-regular fa-file-lines" aria-hidden="true"></i><span>Ask for my CV</span><i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
+      </div>
     </div>
-    
-    <a href="CV SEBASTIAN ZAPATA RESTREPO.pdf" >Download CV</a>
     <Terminal />
   </div>
-
 </section>
 <style>
-
-  .personal{
-    top: 200px;
-    position: absolute;
+  .hero { position: relative; z-index: 2; width: 100%; padding: 112px 24px 64px; overflow: hidden; font-family: 'League Spartan', sans-serif; }
+  .hero::before { content: ''; position: absolute; inset: 0; z-index: -1; pointer-events: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 600'%3E%3Cfilter id='a'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23a)'/%3E%3C/svg%3E"); background-size: 182px; opacity: .1; }
+  .hero-layout { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); align-items: center; gap: 64px; width: 100%; max-width: 1060px; margin-inline: auto; }
+  .personal { min-width: 0; }
+  .greeting { font-size: 21px; line-height: 1.4; color: #b9c3bd; margin-bottom: 16px; }
+  h1 { color: #abffd1; font-size: clamp(48px, 5.5vw, 72px); font-weight: 700; letter-spacing: -.035em; line-height: 1.02; margin: 0 0 20px; }
+  h1 span { display: block; }
+  .role { color: #eef2ef; font-size: clamp(22px, 2.1vw, 27px); font-weight: 500; line-height: 1.25; margin-bottom: 14px; }
+  .hero-description { color: #b9c3bd; font-size: 18px; line-height: 1.5; max-width: 370px; margin-bottom: 16px; }
+  .location { display: flex; align-items: center; gap: 8px; color: #9daaa2; font-size: 16px; line-height: 1.4; }
+  .location i { font-size: 13px; color: #83b498; }
+  .hero-actions { margin-top: 28px; }
+  .cv-button { display: inline-flex; align-items: center; justify-content: center; gap: 12px; min-height: 52px; padding: 15px 20px; border-radius: 10px; border: 1px solid #33d47b; background: #00b551; color: #052a16; box-shadow: 0 3px 0 #007b37; font-size: 17px; font-weight: 650; line-height: 1.2; text-decoration: none; transition: background-color .2s, box-shadow .2s, transform .2s; }
+  .cv-button i:last-child { font-size: 12px; margin-left: 8px; }
+  .cv-button:hover { background: #32ce78; box-shadow: 0 4px 0 #007b37; transform: translateY(-1px); }
+  .cv-button:active { transform: translateY(2px); box-shadow: none; }
+  .cv-button:focus-visible, .btn-nav:focus-visible { outline: 2px solid #abffd1; outline-offset: 5px; }
+  .btn-nav { display: none; }
+  @media (max-width: 1000px) { .hero-layout { gap: 32px; } }
+  @media (max-width: 800px) {
+    .hero { padding: 104px 20px 48px; }
+    .hero-layout { grid-template-columns: minmax(0, 1fr); gap: 32px; max-width: 520px; }
+    h1 { font-size: clamp(46px, 10vw, 64px); }
+    h1 span { display: inline; }
+    .hero-description { max-width: 390px; }
+    .btn-nav { display: inline-flex; align-items: center; justify-content: center; position: absolute; top: 16px; left: 20px; width: 44px; height: 44px; color: #abffd1; background: #292929; border: 1px solid #ffffff24; border-radius: 10px; font-size: 18px; cursor: pointer; }
   }
- .fade-in {
-  transition: opacity 0.7s ease-in-out, transform 0.2s ease-in-out;
-  opacity: 0;
-  transform: translateY(5px);
-}
-
-.fade-in.load {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-  .btn-nav{
-
-font-size: 20px;
-color: #FFFFFF;
-position: absolute;
-top: 15px;
-width: 50px;
-height: 50px;
-border-radius: 20px;
-background-color:#00b551;
-left: 15px;
-border: none;
-transition: 0.5s;
-display: none;
-
-}
-
-    section{
-      overflow-x: hidden;
-      position: relative;
-      z-index: 2;
-      padding-left: 100px;
-      display: flex;
-      align-items: center;
-        background-color: transparent;
-        height: 680px;
-        width: 100%;
-    }
-
-    section:before {
- 	 content: "";
-	  background-color: transparent;
-  	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 600'%3E%3Cfilter id='a'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23a)'/%3E%3C/svg%3E");
-  	background-repeat: repeat;
- 	 background-size: 182px;
- 	 opacity: 0.1;
- 	 top: 0;
- 	 left: 0;
- 	 position: absolute;
- 	 width: 100%;
- 	 height: 100%;
-	  z-index: -1;
-
-}
-
-    .container{
-      font-weight: 100;
-      font-size: 40px;
-      width: 400px;
-      display: flex;
-      flex-direction: column;
-      align-items: start;
-      color: #FFFFFF;
-      font-family: 'League Spartan', sans-serif;
-    }
-
-    .container .im .bolder{
-      color: #00B551;
-      font-weight: 750;
-    }
-
-    .container h3{
-      font-size: 30px;
-      font-weight: 400;
-      color: #90ff9f;
-      
-    }
-
-    .container h4{
-      font-size: 25px;
-      font-weight: 400;
-      color: #90ff9f8f;
-    }
-
-    .container a{
-      text-align: center;
-
-      width: 200px;
-      border-radius: 25px;
-      padding: 20px;
-      font-weight: 500;
-      background-color: #00B551;
-      font-size: 20px;
-      position: absolute;
-      left: 200px;
-      bottom: 180px;
-      color: #ffffffd5;
-    }
- 
-    .circle{
-      left: -110px;
-      z-index: -1;
-      top: -100px;
-      border-radius: 100%;
-      position: absolute;
-      height: 300px;
-      border-left: #00b55191 solid 2px;
-     
-      width: 300px;
-      animation-name: rotate;
-      animation-duration: 0.6s;
-      animation-delay: 0.2s;
-      animation-fill-mode: forwards;
-      transform: rotate(1deg);
-    
-    }
-
-    
-
-    .circle2{
-       border: #00b55100 solid 2px;
-      
-      animation-name: rotate;
-      animation-duration: 0.6s;
-      animation-delay: 0.5s;
-      animation-fill-mode: forwards;
-      right: 450px;
-      z-index: -1;
-      bottom: 70px;
-      border-radius: 100%;
-      position: absolute;
-      height: 300px;
-
-      width: 300px;
-    } 
-    @keyframes rotate {
-0%{
-  border-top: #00b55152 solid 2px;
-}
-
-50%{
-  border-left: #00b551 solid 2px;
-  border-right: #00b551 solid 2px;
-}
-      100%{
-        transform: rotate(360deg);
-       border: #00b55150 solid 2px;
-      }
-    }
-
-    @media screen and (max-width: 1200px) {
-       .circle2{
-        right: 380px;
-       }
-    }
-    @media screen and (max-width: 1100px) {
-      .btn-nav{
-      visibility: hidden;
-    }
-      section{
-        padding: 0;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-       
-      }
-      .circle2{
-        right: -180px;
-       }
-      .container{    
-        font-size: 30px;
-        display: flex;
-        align-items: center;
-      }
-
-      .container a{
-        text-align: center;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border-radius: 20px;
-        height: 60px;
-        left: 50%;
-        transform: translateX(-50%);
-
-      }
-
-
-      
-
-    .active{
-     
-      font-size: 20px;
-        color: #FFFFFF;
-        position: absolute;
-        top: 15px;
-        width: 50px;
-        height: 50px;
-        border-radius: 20px;
-        background-color:#00b551;
-        left: 410px;
-        border: none;
-       transform: rotate(-180deg);
-       transition: 0.5s;
-    }
-
-    @media screen and (max-width: 800px) {
-
-     
-      .btn-nav{
-        display: block;
-        visibility: visible;
-      }
-    }
-    }
+  @media (prefers-reduced-motion: reduce) { .cv-button { transition: none; } .cv-button:hover, .cv-button:active { transform: none; } }
 </style>
-<head>
-  <script src="/components/Navbar.js" defer></script>
-</head>
-

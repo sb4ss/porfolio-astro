@@ -1,41 +1,44 @@
-document.querySelector(".btn-nav").addEventListener("click", () => {
-  document.querySelector(".navbar").classList.toggle("navActive");
-  document.querySelector(".btn-nav").classList.toggle("active");
-  document.querySelector(".body").classList.toggle("noscroll");
-});
+const nav = document.querySelector('.navbar');
+const trigger = document.querySelector('.btn-nav');
+const closeButton = document.querySelector('.quitnav');
+const mobile = window.matchMedia('(max-width: 800px)');
 
-document.querySelector(".quitnav").addEventListener("click", () => {
-  document.querySelector(".navbar").classList.remove("navActive");
-  document.querySelector(".btn-nav").classList.remove("active");
-  document.querySelector(".body").classList.remove("noscroll");
-});
+function setNavigation(open, restoreFocus = false) {
+  const expanded = mobile.matches && open;
+  nav.classList.toggle('navActive', expanded);
+  trigger.classList.toggle('active', expanded);
+  document.body.classList.toggle('noscroll', expanded);
+  trigger.setAttribute('aria-expanded', String(expanded));
+  nav.inert = mobile.matches && !expanded;
+  if (expanded) closeButton.focus();
+  else if (restoreFocus && mobile.matches) trigger.focus();
+}
 
-document.querySelector(".nav-link").addEventListener("click", () => {
-  document.querySelector(".navbar").classList.toggle("navActive");
-  document.querySelector(".btn-nav").classList.toggle("active");
-  document.querySelector(".body").classList.remove("noscroll");
+trigger.addEventListener('click', () => {
+  setNavigation(!nav.classList.contains('navActive'));
 });
-
-document.querySelector(".nav-link2").addEventListener("click", () => {
-  document.querySelector(".navbar").classList.toggle("navActive");
-  document.querySelector(".btn-nav").classList.toggle("active");
-  document.querySelector(".body").classList.remove("noscroll");
+closeButton.addEventListener('click', () => setNavigation(false, true));
+nav.querySelectorAll('a').forEach(link => {
+  link.addEventListener('click', () => setNavigation(false, true));
 });
-
-document.querySelector(".nav-link3").addEventListener("click", () => {
-  document.querySelector(".navbar").classList.toggle("navActive");
-  document.querySelector(".btn-nav").classList.toggle("active");
-  document.querySelector(".body").classList.remove("noscroll");
+nav.addEventListener('keydown', event => {
+  if (!mobile.matches || !nav.classList.contains('navActive')) return;
+  if (event.key === 'Escape') {
+    event.preventDefault();
+    setNavigation(false, true);
+  }
+  if (event.key === 'Tab') {
+    const controls = [...nav.querySelectorAll('a, button')];
+    const first = controls[0];
+    const last = controls[controls.length - 1];
+    if (event.shiftKey && document.activeElement === first) {
+      event.preventDefault();
+      last.focus();
+    } else if (!event.shiftKey && document.activeElement === last) {
+      event.preventDefault();
+      first.focus();
+    }
+  }
 });
-
-document.querySelector(".nav-link4").addEventListener("click", () => {
-  document.querySelector(".navbar").classList.toggle("navActive");
-  document.querySelector(".btn-nav").classList.toggle("active");
-  document.querySelector(".body").classList.remove("noscroll");
-});
-
-document.querySelector(".nav-link5").addEventListener("click", () => {
-  document.querySelector(".navbar").classList.toggle("navActive");
-  document.querySelector(".btn-nav").classList.toggle("active");
-  document.querySelector(".body").classList.remove("noscroll");
-});
+mobile.addEventListener('change', () => setNavigation(false));
+setNavigation(false);

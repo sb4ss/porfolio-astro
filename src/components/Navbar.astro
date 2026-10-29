@@ -1,4 +1,4 @@
-<nav class=" h-12  w-full bg-white  items-center  navbar ">
+<nav id="main-navigation" aria-label="Main navigation" class=" h-12  w-full bg-white  items-center  navbar ">
     <ul class="w-full flex flex-row   items-center" >
         <li class="nav-link"><a href="#projects">Projects</a></li>
         <li  class="nav-link2"><a href="https://sb4ss-blog.vercel.app">Blog</a></li>
@@ -6,7 +6,7 @@
         <li class="nav-link4" ><a href="#contact">Contact</a></li>
         <li class="nav-link5" ><a href="#about">About me</a></li>
     </ul>
-   <button class="quitnav" ><i class="fa-solid fa-x"></i></button>
+   <button class="quitnav" type="button" aria-label="Close navigation"><i class="fa-solid fa-x" aria-hidden="true"></i></button>
 </nav>
 
 <style>
@@ -21,6 +21,7 @@
         color: #CEFFD5;
         font-size: 20px;
         padding-left: 10px;
+        padding-right: 120px;
     }
 
     ul{
@@ -85,6 +86,14 @@
         width: 20px;
     }
 
+ }
+ @media (max-width: 800px) {
+   nav { position: fixed; width: min(400px, 100%); height: 100dvh; overflow-y: auto; visibility: hidden; padding-right: 0; }
+   nav.navActive { height: 100dvh; visibility: visible; }
+   ul { min-height: 100%; height: auto; padding: 72px 20px 32px; gap: 12px; }
+   ul li { margin: 0; }
+   ul a { display: flex; min-height: 44px; align-items: center; padding: 4px 12px; }
+   .quitnav { width: 44px; height: 44px; top: 12px; right: 12px; }
  }
 </style>
 <script>
